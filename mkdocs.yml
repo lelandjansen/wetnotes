@@ -1,0 +1,19 @@
+site_name: Wetnotes
+site_url: https://www.wetnotes.co
+repo_name: lelandjansen/wetnotes
+repo_url: https://github.com/lelandjansen/wetnotes
+site_description: Scuba tips, gear reviews, and other musings
+site_author: Leland Jansen
+copyright: Copyright &copy; Leland Jansen
+theme:
+  name: material
+  language: en
+  palette:
+    scheme: default
+    primary: blue
+  features:
+  - navigation.instant
+  - navigation.tabs
+  - navigation.top
+nav:
+- Home: index.md

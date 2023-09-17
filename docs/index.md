@@ -1,0 +1,3 @@
+# Wetnotes
+
+Hello, world!

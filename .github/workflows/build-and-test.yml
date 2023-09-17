@@ -1,0 +1,21 @@
+name: Build and test
+on:
+  push:
+    branches:
+      - master 
+  pull_request:
+jobs:
+  build-and-test:
+    name: Build and test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+      - name: Install Install Material for MkDocs
+        run: pip install --requirement requirements.txt
+      - name: Build site
+        run: mkdocs build --strict

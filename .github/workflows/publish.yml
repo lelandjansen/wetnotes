@@ -1,0 +1,32 @@
+name: Publish site
+on:
+  push:
+    branches:
+      - master 
+permissions:
+  contents: write
+jobs:
+  publish-site:
+    name: Publish site
+    runs-on: ubuntu-latest
+    environment: github-pages
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+      - name: Set cache environment
+        run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV 
+      - name: Set up cache
+        uses: actions/cache@v3
+        with:
+          key: mkdocs-material-${{ env.cache_id }}
+          path: .cache
+          restore-keys: |
+            mkdocs-material-
+      - name: Install Install Material for MkDocs
+        run: pip install --requirement requirements.txt
+      - name: Publish
+        run: mkdocs gh-deploy --force
